@@ -17,3 +17,13 @@ Gestionnaire, by constrast, is intended to have two modes of operation:
     gest add-pkg archive
     
 Gestionnaire will completely ignore all metadata in the archive such as the timestamp, permissions, owner, etc. 
+
+Constraints.
+
+Gestionnaire has two notions of constraints:
+
+Global constraints apply to all packages that Gestionnaire manages
+
+Per-package constraints apply to individual packages ... however, no two packages can claim ownership of the same file
+
+there are separate notions of config and data files
