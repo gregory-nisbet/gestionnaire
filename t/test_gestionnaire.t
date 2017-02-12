@@ -30,3 +30,5 @@ do {
 
 is((-f $config_path), 1, 'config file exists');
 is(0 + `cat $config_path | wc -l`, 2, 'config file has 2 lines');
+
+
