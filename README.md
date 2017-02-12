@@ -6,7 +6,7 @@ Gestionnaire is intended to be a simple package manager in the spirit of `instal
 
 Slackware's package management strategy is really simple. The user creates a tar archive. Paths inside the archive are interpreted relative to the root of the filesystem, except for the `install` directory, which contains stuff like postinstallation scripts. The permissions and owners of the group are preserved in a Slackware package.
 
-Gestionnaire, by constrast, is intended to have two modes of operation:
+Gestionnaire is intended to support two modes of operation: a file-oriented mode where individual files are moved into place and associated with a package name and an archive mode where an entire collection of files is associated with a package at once, totally wiping out whatever was there before.
 
 1) file-oriented
     
@@ -15,15 +15,20 @@ Gestionnaire, by constrast, is intended to have two modes of operation:
 2) archive
 
     gest add-pkg archive
-    
-Gestionnaire will completely ignore all metadata in the archive such as the timestamp, permissions, owner, etc. 
 
-Constraints.
+In both modes of operation, Gestionnaire will be picky and reject any operation that
 
-Gestionnaire has two notions of constraints:
+1) writes to a path that is not explicitly managed by gestionnaire
+1) writes to a path that is not associated with the package name in question
 
-Global constraints apply to all packages that Gestionnaire manages
+Gestionnaire will completely ignore all metadata in the archive or on files such as the timestamp, permissions, owner, etc. 
 
-Per-package constraints apply to individual packages ... however, no two packages can claim ownership of the same file
+Allowances.
 
-there are separate notions of config and data files
+Gestionnaire has two notions of allowances:
+
+Global allowances apply to all packages that Gestionnaire manages
+
+Per-package allowances apply to individual packages ... however, no
+
+there are separate notions of config and data files ... to faciliate managing backups of configuration information, as well as wiping out data.
